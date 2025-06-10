@@ -1,0 +1,36 @@
+# Config file for fvm dart run build_runner build --delete-conflicting-outputs
+
+targets:
+  $default:
+    builders:
+      # Tell json_serializable to always use the toJson method into its generated code
+      # Otherwise it probably converts a wrong JSON string
+      json_serializable:
+        options:
+          explicit_to_json: true
+      # Tell freezed to put all generated classes into lib/.generated
+      # instead of putting it next to the source class
+      freezed|freezed:
+        options:
+          build_extensions:
+            "^lib/{{}}.dart": "lib/.generated/{{}}.freezed.dart"
+      # Tell source_gen to put all generated classes into lib/.generated
+      # instead of putting it next to the source class
+      source_gen|combining_builder:
+        options:
+          build_extensions:
+            "^lib/{{}}.dart": "lib/.generated/{{}}.g.dart"
+      # Tell flutter_gen_runner to put all generated classes into lib/.generated
+      # instead of putting it to lib/gen
+      flutter_gen_runner:
+        options: 
+          output: lib/.generated/
+          
+# Change order of file generation
+global_options:
+  freezed:
+    runs_before:
+      - json_serializable
+  json_serializable:
+    runs_before:
+      - retrofit_generator

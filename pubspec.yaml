@@ -1,0 +1,24 @@
+name: flutter_log_helper
+description: "A new Flutter package project."
+version: 0.0.1
+homepage: null
+
+environment:
+  sdk: ^3.7.2
+  flutter: ">=1.17.0"
+
+dependencies:
+  collection: ^1.19.1
+  dio: ^5.8.0+1
+  flutter:
+    sdk: flutter
+  share_plus: ^11.0.0
+
+dev_dependencies:
+  build_runner: ^2.4.15
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+  mockito: ^5.4.6
+
+flutter: null
